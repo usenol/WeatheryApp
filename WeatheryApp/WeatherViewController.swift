@@ -87,11 +87,26 @@ extension WeatherViewController {
         
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         temperatureLabel.font = UIFont.boldSystemFont(ofSize: 80)
-        temperatureLabel.text = "38°C"
+        temperatureLabel.attributedText = makeTemperatureText(with: "21")
          
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
         cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         cityLabel.text = "Ankara"
+    }
+    
+    func makeTemperatureText(with temperature: String) -> NSAttributedString {
+        
+        var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
+        boldTextAttributes[.foregroundColor] = UIColor.label
+        boldTextAttributes[.font] = UIFont.boldSystemFont(ofSize: 100)
+        
+        var plainTextAttirbutes = [NSAttributedString.Key: AnyObject]()
+        plainTextAttirbutes[.font] = UIFont.systemFont(ofSize: 80)
+        
+        let text = NSMutableAttributedString(string: temperature, attributes: boldTextAttributes)
+        text.append(NSAttributedString(string: "°C", attributes: plainTextAttirbutes))
+        
+        return text
     }
     
     func layout() {
