@@ -25,11 +25,9 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         style()
         layout()
     }
-
 }
 
 extension WeatherViewController {
